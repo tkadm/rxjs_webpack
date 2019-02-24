@@ -1,0 +1,21 @@
+{
+  "name": "rxjs_webpack",
+  "version": "1.0.0",
+  "description": "This is rxjs with webpack reserch project",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "tdka97",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.9.5",
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  }
+}
