@@ -4,7 +4,7 @@
   "description": "This is rxjs with webpack reserch project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --watch"
   },
   "author": "tdka97",
   "license": "ISC",
