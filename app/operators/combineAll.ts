@@ -1,21 +1,22 @@
 import * as Rx from 'rxjs';
-import { map, take, combineAll } from 'rxjs/operators';
-
-export function Example() {
+import { bufferWhen, combineAll, audit, delay, take, map, every } from 'rxjs/operators';
 
 
-    var clicks = Rx.fromEvent(document, 'click');
+export function AuditExport(obs: Rx.Observable<Event>, btn: HTMLButtonElement) {
+    //Rx.interval(1000).subscribe(value => { console.warn(value) });
+    let obs2: any = Rx.fromEvent(btn, 'click');
+    let values: Array<number> = [0, 0];
+    let first: Rx.Observable<string> = obs.pipe(map(value => { values[0]++; return 'A' + values[0]; }));
 
-    var higherOrder = clicks.pipe(map(ev => {
-        console.log('clicked!');
-        let obs: Rx.Observable<any> = Rx.interval(Math.random() * 2000).pipe(take(3));
-        obs.subscribe(val => console.log('InternalObs: ' + val),
-            (error) => { }, () => console.log('obs completed!'));
-        return obs;
-    }, take(2))
-    );
-    higherOrder.subscribe(value => console.log('HighterObs: ' + value));
-    var result = higherOrder.pipe(combineAll());
-    result.subscribe(x => console.log(x), (error) => { console.error(error) },
-        () => { console.log('completed!'); });
+    let second: Rx.Observable<string> = Rx.interval(500).pipe(take(4), map(value => { values[1]++; return 'B' + values[1]; }));
+
+    let outer: Rx.Observable<any> = Rx.interval(1000).pipe(take(2), map(item => item == 0 ? first : second));
+
+    outer.pipe(combineAll((item1, item2) => {
+        console.log(`Inner 1: ${item1}; Inner 2: ${item2}`);
+        return [item1, item2];
+    }))
+        .subscribe(value => { console.log(`Output: ${value}`); }, null, () => console.log("completed!"));
+
+
 }

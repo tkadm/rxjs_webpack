@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './app/main.ts',
     mode: 'development',
+    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'

@@ -1,7 +1,7 @@
 import * as Rx from 'rxjs';
-import { AuditExport } from './operators/audit';
+import { Export } from './operators/common';
 
-let entry_point: (obs: Rx.Observable<Event>, bnt: HTMLButtonElement) => void = AuditExport;
+let entry_point: (obs: Rx.Observable<Event>, bnt: HTMLButtonElement) => void = Export;
 
 window.addEventListener('load', () => {
     let btn: HTMLButtonElement = <HTMLButtonElement>document.getElementById("btnRoot");
