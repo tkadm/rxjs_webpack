@@ -17,17 +17,17 @@ window.addEventListener('load', () => {
     if (entry_point) entry_point(Rx.fromEvent(btnMain, 'click'), { Main: btnMain, Complete: btnComplete, Error: btnError });
 });
 
-export function CreateMarketInterval(interval: number, count: number, prefix?: string): Rx.Observable<string> {
+export function CreateMarkedInterval(interval: number, count: number, prefix?: string): Rx.Observable<string> {
     return Rx.interval(interval).pipe(map(value => prefix ? prefix + value : value.toString()), take(count));
 }
 
-export function CreateMarketEvent(observ_event: Rx.Observable<Event>, prefix?: string): Rx.Observable<string> {
+export function CreateMarkedEvent(observ_event: Rx.Observable<Event>, prefix?: string): Rx.Observable<string> {
     let i: number = 0;
     return observ_event.pipe(map(_ => { i++; return prefix ? prefix + i : i.toString(); }));
 }
 
 export function SubscribeConsole<T>(obs: Rx.Observable<T>): Rx.Subscription {
-    return obs.subscribe(value => console.log(value), error => console.warn(error), () => console.log('Complete!'));
+    return obs.subscribe(value => console.log(value), error => console.warn(`Error: ${error}`), () => console.log('Complete!'));
 }
 
 export function CreateButtonObserver(next: HTMLButtonElement, complete: HTMLButtonElement, error?: HTMLButtonElement): Rx.Observable<number> {
@@ -41,4 +41,8 @@ export function CreateButtonObserver(next: HTMLButtonElement, complete: HTMLButt
 
 export function CreateIButtonObserver(buttons: IButtons): Rx.Observable<number> {
     return CreateButtonObserver(buttons.Main, buttons.Complete, buttons.Error);
+}
+
+export function GenerateRandom(min: number, max: number) {
+    return Math.round(min + Math.random() * (max - min));
 }
