@@ -46,3 +46,5 @@ export function CreateIButtonObserver(buttons: IButtons): Rx.Observable<number> 
 export function GenerateRandom(min: number, max: number) {
     return Math.round(min + Math.random() * (max - min));
 }
+
+export let Letters: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
