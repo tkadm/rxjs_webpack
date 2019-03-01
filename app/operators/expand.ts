@@ -1,5 +1,5 @@
 import * as Rx from 'rxjs';
-import { map, expand, delay } from 'rxjs/operators';
+import { map, expand, delay, multicast, publish } from 'rxjs/operators';
 
 import { IButtons, SubscribeConsole, CreateIButtonObserver, Letters } from '../main';
 
