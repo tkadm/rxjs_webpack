@@ -4,7 +4,9 @@
   "description": "This is rxjs with webpack reserch project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --watch"
+    "start": "npm run build | npm run serve",
+    "build": "webpack --watch",
+    "serve": "live-server --port=81 --host=localhost --no-browser"
   },
   "author": "tdka97",
   "license": "ISC",

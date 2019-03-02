@@ -1,6 +1,6 @@
 import * as Rx from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { Export } from './operators/common';
+import { Export } from './common';
 
 export interface IButtons {
     Main: HTMLButtonElement;
@@ -48,3 +48,5 @@ export function GenerateRandom(min: number, max: number) {
 }
 
 export let Letters: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+console.clear();
