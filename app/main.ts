@@ -1,6 +1,7 @@
 import * as Rx from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Export } from './common';
+import { Export as ExportRetryWhen } from './operators/retryWhen';
 
 export interface IButtons {
     Main: HTMLButtonElement;
@@ -8,7 +9,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons) => void = Export;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons) => void =ExportRetryWhen;// Export;
 
 window.addEventListener('load', () => {
     let btnMain: HTMLButtonElement = <HTMLButtonElement>document.getElementById("btnMain");
