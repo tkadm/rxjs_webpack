@@ -4,19 +4,24 @@ import { Export } from './common';
 import { Export as ExportRetryWhen } from './operators/retryWhen';
 
 export interface IButtons {
-    Main: HTMLButtonElement;
+    Next: HTMLButtonElement;
     Complete: HTMLButtonElement;
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons) => void =ExportRetryWhen;// Export;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ExportRetryWhen;
 
 window.addEventListener('load', () => {
-    let btnMain: HTMLButtonElement = <HTMLButtonElement>document.getElementById("btnMain");
-    let btnComplete: HTMLButtonElement = <HTMLButtonElement>document.getElementById("btnComplete");
-    let btnError: HTMLButtonElement = <HTMLButtonElement>document.getElementById("btnError");
-    if (entry_point) entry_point(Rx.fromEvent(btnMain, 'click'), { Main: btnMain, Complete: btnComplete, Error: btnError });
+    if (entry_point) entry_point(
+        Rx.fromEvent(GetBtn("btnMain"), 'click'),
+        { Next: GetBtn("btnNext"), Complete: GetBtn("btnComplete"), Error: GetBtn("btnError") },
+        { Next: GetBtn("btnNextII"), Complete: GetBtn("btnCompleteII"), Error: GetBtn("btnErrorII") }
+    );
 });
+
+function GetBtn(id: string): HTMLButtonElement {
+    return <HTMLButtonElement>document.getElementById(id);
+}
 
 export function CreateMarkedInterval(interval: number, count: number, prefix?: string): Rx.Observable<string> {
     return Rx.interval(interval).pipe(map(value => prefix ? prefix + value : value.toString()), take(count));
@@ -41,7 +46,7 @@ export function CreateButtonObserver(next: HTMLButtonElement, complete: HTMLButt
 }
 
 export function CreateIButtonObserver(buttons: IButtons): Rx.Observable<number> {
-    return CreateButtonObserver(buttons.Main, buttons.Complete, buttons.Error);
+    return CreateButtonObserver(buttons.Next, buttons.Complete, buttons.Error);
 }
 
 export function GenerateRandom(min: number, max: number) {

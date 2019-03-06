@@ -11,33 +11,61 @@
             margin: 20px;
             border-width: 1px;
             border-color: black;
-            font-weight: bold;  
-            width: 200px;          
+            font-weight: bold;
+            width: 200px;
         }
 
-        #btnMain {
-            color: blue;
+        #btnNext {
             background-color: rgba(0, 0, 255, 0.25);
         }
 
         #btnComplete {
-            color: green;
             background-color: rgba(0, 255, 0, 0.25);
         }
 
         #btnError {
-            color: red;
             background-color: rgba(255, 0, 0, 0.25);
+        }
+
+        .button-next {
+            color: blue;
+        }
+
+        .button-error {
+            color: red;
+        }
+
+        .button-complete {
+            color: green;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .bordered{
+            border: 1px solid black;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <button id="btnMain">Button Main (next)</button>
-        <button id="btnComplete">Button complete</button>
-        <button id="btnError">Button error</button>
+    <div class="container">
+        <div>
+            <button id="btnMain">Main</button>
+        </div>
+        <div class="bordered">
+            <button id="btnNext" class="button-next">Main (Next)</button>
+            <button id="btnComplete" class="button-complete">Complete</button>
+            <button id="btnError" class="button-error">Error</button>
 
+        </div>
+        <div>
+            <button id="btnNextII" class="button-next">Next vII</button>
+            <button id="btnCompleteII" class="button-complete">Complete vII</button>
+            <button id="btnErrorII" class="button-error">Error vII</button>
+        </div>
     </div>
 </body>
 
