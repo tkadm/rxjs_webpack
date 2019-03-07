@@ -9,7 +9,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ExportRetryWhen;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
 
 window.addEventListener('load', () => {
     if (entry_point) entry_point(
