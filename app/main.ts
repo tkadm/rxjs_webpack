@@ -3,6 +3,7 @@ import { map, take } from 'rxjs/operators';
 import { Export } from './common';
 import { Export as ExportDebounce } from './operators/debounce';
 import { Export as ExportRetryWhen } from './operators/retryWhen';
+import { Export as ExportAudit } from './operators/audit';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -40,6 +41,7 @@ export function SubscribeConsole<T>(obs: Rx.Observable<T>): Rx.Subscription {
 export function CreateButtonObserver(next: HTMLButtonElement, complete: HTMLButtonElement, error?: HTMLButtonElement): Rx.Observable<number> {
     return new Rx.Observable(subscriber => {
         let i: number = 0;
+        console.log("CreateButtonsObserver subscription!");
         next.addEventListener('click', _ => { i++; subscriber.next(i); });
         complete.addEventListener('click', () => subscriber.complete());
         if (error) error.addEventListener('click', error => subscriber.error(error));
