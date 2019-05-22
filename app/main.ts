@@ -4,6 +4,7 @@ import { Export } from './common';
 import { Export as ExportDebounce } from './operators/debounce';
 import { Export as ExportRetryWhen } from './operators/retryWhen';
 import { Export as ExportAudit } from './operators/audit';
+import { FirstLesson } from './operators/firstlesson';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -11,7 +12,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ExportDebounce;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = FirstLesson;
 
 window.addEventListener('load', () => {
     if (entry_point) entry_point(
