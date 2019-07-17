@@ -13,9 +13,11 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = SwitchMapRoot;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
+export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {
+    details = <HTMLDetailsElement>document.getElementById("details_1");
     if (entry_point) entry_point(
         Rx.fromEvent(GetBtn("btnMain"), 'click'),
         { Next: GetBtn("btnNext"), Complete: GetBtn("btnComplete"), Error: GetBtn("btnError") },
