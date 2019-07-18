@@ -1,11 +1,13 @@
 import * as Rx from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map, take, shareReplay } from 'rxjs/operators';
 import { Export } from './common';
 import { Export as ExportDebounce } from './operators/debounce';
 import { Export as ExportRetryWhen } from './operators/retryWhen';
 import { Export as ExportAudit } from './operators/audit';
 import { FirstLesson } from './operators/firstlesson';
 import { SwitchMapRoot } from './operators/switchMap';
+import { SubjectExport } from './objects/Subject';
+import { ShareReplayExport } from './operators/ShareReplay';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -13,7 +15,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ShareReplayExport;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {

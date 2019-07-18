@@ -14,10 +14,10 @@
     "rxjs": "^6.5.2"
   },
   "devDependencies": {
-    "@types/node": "^11.13.11",
+    "@types/node": "^11.13.18",
     "awesome-typescript-loader": "^5.2.1",
-    "typescript": "^3.4.5",
-    "webpack": "^4.32.1",
-    "webpack-cli": "^3.3.2"
+    "typescript": "^3.5.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
   }
 }
