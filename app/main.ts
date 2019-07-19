@@ -8,6 +8,7 @@ import { FirstLesson } from './operators/firstlesson';
 import { SwitchMapRoot } from './operators/switchMap';
 import { SubjectExport } from './objects/Subject';
 import { ShareReplayExport } from './operators/ShareReplay';
+import { ExportMulticast } from './operators/multicast';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -15,7 +16,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ShareReplayExport;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {
