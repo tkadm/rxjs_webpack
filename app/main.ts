@@ -9,6 +9,7 @@ import { SwitchMapRoot } from './operators/switchMap';
 import { SubjectExport } from './objects/Subject';
 import { ShareReplayExport } from './operators/ShareReplay';
 import { ExportMulticast } from './operators/multicast';
+import { Export as CustomOperatorExport } from './operators/CustomOperator';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -16,7 +17,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = CustomOperatorExport;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {

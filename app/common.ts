@@ -1,9 +1,10 @@
 import * as Rx from 'rxjs';
-
+import { tap, switchMap } from 'rxjs/operators'
 import { IButtons, CreateMarkedEvent, CreateMarkedInterval, SubscribeConsole, CreateIButtonObserver, GenerateRandom, Letters, details } from './main';
 
 export function Export(obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) {
-    obs.subscribe(Action);
+    let w_result: Rx.Observable<any> = CreateIButtonObserver(buttons).pipe(switchMap(item => Rx.from([item])));
+    SubscribeConsole(w_result);
 }
 
 function Action() {
@@ -18,4 +19,17 @@ function Action2() {
     let { title, ...rest } = val;
     console.log(title);
     console.log(rest);
+}
+
+function Action3() {
+    let w_init: string = "ClassName/SubclassName/Sub3Classname";
+    let [one, ...two] = w_init.split('/');
+    console.log(one);
+    console.log(two);
+}
+
+function Action4() {
+    let w_substr: Array<string> = ['1', '2'];
+    let w_full: Array<string> = ['1', '2', '3', '4'];
+    console.log(w_full.join('/').indexOf(w_substr.join('/')) == 0 ? "Equal!" : "Not equal!");
 }
