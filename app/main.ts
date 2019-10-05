@@ -18,7 +18,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = notification_main;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {
