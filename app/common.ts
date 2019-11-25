@@ -1,10 +1,13 @@
 import * as Rx from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators'
+import { tap, switchMap, map } from 'rxjs/operators'
 import { IButtons, CreateMarkedEvent, CreateMarkedInterval, SubscribeConsole, CreateIButtonObserver, GenerateRandom, Letters, details } from './main';
 
 export function Export(obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) {
-    let w_result: Rx.Observable<any> = CreateIButtonObserver(buttons).pipe(switchMap(item => Rx.from([item])));
-    SubscribeConsole(w_result);
+    let first: Rx.Observable<string> = Rx.from(["A", "B", "C"]);
+    let second: Rx.Observable<number> = Rx.from([234]);
+    SubscribeConsole(second.pipe(
+        switchMap(num => first.pipe(map(letter => { return { letter: letter, num: num }; })))
+    ));
 }
 
 function Action() {

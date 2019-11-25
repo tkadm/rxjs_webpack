@@ -11,7 +11,6 @@
   "author": "tdka97",
   "license": "ISC",
   "dependencies": {
-    "redux": "^4.0.4",
     "rxjs": "^6.5.2"
   },
   "devDependencies": {

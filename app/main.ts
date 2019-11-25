@@ -10,7 +10,7 @@ import { SubjectExport } from './objects/Subject';
 import { ShareReplayExport } from './operators/ShareReplay';
 import { ExportMulticast } from './operators/multicast';
 import { Export as CustomOperatorExport } from './operators/CustomOperator';
-import { AnonimousSubjectExport } from './objects/AnonimousSubject';
+import {notification_main} from './notification';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -18,7 +18,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = AnonimousSubjectExport;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = Export;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {
@@ -28,6 +28,7 @@ window.addEventListener('load', () => {
         { Next: GetBtn("btnNext"), Complete: GetBtn("btnComplete"), Error: GetBtn("btnError") },
         { Next: GetBtn("btnNextII"), Complete: GetBtn("btnCompleteII"), Error: GetBtn("btnErrorII") }
     );
+    console.log(module);
 });
 
 function GetBtn(id: string): HTMLButtonElement {
