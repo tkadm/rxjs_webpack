@@ -1,9 +1,16 @@
 import * as rxjs from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IButtons } from '../main';
 
+let behavSubj: rxjs.BehaviorSubject<string> = new rxjs.BehaviorSubject("first value");
+
 export function BehaviorSubjectExport(obs: rxjs.Observable<Event>, buttons: IButtons, buttonsII: IButtons) {
-    let bhv: rxjs.BehaviorSubject<string> = new rxjs.BehaviorSubject("first value");
-    bhv.subscribe(console.log);
-    bhv.subscribe(console.log);
-    bhv.next("second value");
+
+    Addition("Abr").subscribe(console.log);
+    Addition("Sobr").subscribe(console.log);
+    behavSubj.next("second value");
+}
+
+function Addition(corrector: string): rxjs.Observable<string> {
+    return behavSubj.pipe(map<string, string>(value => value + " " + corrector));
 }
