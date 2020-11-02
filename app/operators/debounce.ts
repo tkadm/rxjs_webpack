@@ -1,7 +1,7 @@
 import * as Rx from 'rxjs';
 import {
     map, take, timestamp, windowWhen, mergeAll, mergeMap, debounceTime,
-    filter, first, combineLatest, withLatestFrom, audit, find, combineAll, finalize, concatAll
+    filter, first, withLatestFrom, audit, find, combineAll, finalize, concatAll
 } from 'rxjs/operators';
 
 import { IButtons, CreateMarkedEvent, CreateMarkedInterval, SubscribeConsole, CreateIButtonObserver, GenerateRandom, Letters } from '../main';

@@ -13,6 +13,7 @@ import { Export as CustomOperatorExport } from './operators/CustomOperator';
 import { notification_main } from './notification';
 import { Export as ReduceExport } from './operators/reduce';
 import { BehaviorSubjectExport } from './objects/BehaviorSubject';
+import { Export as SubscriptionExport } from './operators/subscription';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -20,7 +21,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = BehaviorSubjectExport;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = SubscriptionExport;
 export let details: HTMLDetailsElement;
 
 window.addEventListener('load', () => {
