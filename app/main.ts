@@ -13,7 +13,7 @@ import { Export as CustomOperatorExport } from './operators/CustomOperator';
 import { notification_main } from './notification';
 import { Export as ReduceExport } from './operators/reduce';
 import { BehaviorSubjectExport } from './objects/BehaviorSubject';
-import { Export as SubscriptionExport } from './operators/subscription';
+import { ExportSbs as SubscriptionExport } from './operators/subscription';
 
 export interface IButtons {
     Next: HTMLButtonElement;

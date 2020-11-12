@@ -1,19 +1,14 @@
 import * as Rx from 'rxjs';
-import { subscribeOn } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { IButtons } from '../main';
 
-export class ListenedObservable<T> extends Rx.Observable<T>{
-    // subscribe(observer?: Rx.PartialObserver<T>): Rx.Subscription<T>{
 
-    // }
-    // subscribe(next?: (value: T) => void, error?: (error: any) => void, complete?: () => void): Subscription{
-
-    // }
+export function ExportSbs(obs: Rx.Observable<Event>, buttons: IButtons, buttons2: IButtons) {
+    obs.subscribe(_ => {
+        Rx.from(['a', 'b', 'c']).pipe(mergeMap(value => HttpEmulator(value))).subscribe(console.log);
+    });
 }
 
-
-export function Export(obs: Rx.Observable<Event>, buttons: IButtons, buttons2: IButtons) {
-    obs.subscribe(console.log);
-    let sbs: Rx.Observable<any> = Rx.fromEvent(buttons.Next, 'click');
-    sbs.subscribe(console.log);
+function HttpEmulator(value: string): Rx.Observable<string> {
+    return Rx.timer(2000).pipe(map(input => value + input));
 }
