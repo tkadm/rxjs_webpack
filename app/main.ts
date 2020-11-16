@@ -14,6 +14,7 @@ import { notification_main } from './notification';
 import { Export as ReduceExport } from './operators/reduce';
 import { BehaviorSubjectExport } from './objects/BehaviorSubject';
 import { ExportSbs as SubscriptionExport } from './operators/subscription';
+import { onWSClick } from './webSocket';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -31,6 +32,7 @@ window.addEventListener('load', () => {
         { Next: GetBtn("btnNext"), Complete: GetBtn("btnComplete"), Error: GetBtn("btnError") },
         { Next: GetBtn("btnNextII"), Complete: GetBtn("btnCompleteII"), Error: GetBtn("btnErrorII") }
     );
+    GetBtn("btnWebSocket").addEventListener("click", onWSClick);
 });
 
 function GetBtn(id: string): HTMLButtonElement {
