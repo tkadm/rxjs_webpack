@@ -1,6 +1,6 @@
 import * as Rx from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators'
-import { IButtons, CreateMarkedEvent, CreateMarkedInterval, SubscribeConsole, CreateIButtonObserver, GenerateRandom, Letters, details } from './main';
+import { IButtons, CreateMarkedEvent, CreateMarkedInterval, SubscribeConsole, CreateIButtonObserver, GenerateRandom, Letters } from './main';
 
 export function Export(obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) {
     let first: Rx.Observable<string> = Rx.from(["A", "B", "C"]);

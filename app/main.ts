@@ -14,6 +14,7 @@ import { notification_main } from './notification';
 import { Export as ReduceExport } from './operators/reduce';
 import { BehaviorSubjectExport } from './objects/BehaviorSubject';
 import { ExportSbs as SubscriptionExport } from './operators/subscription';
+import { Main as StudyMain } from './study/main';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -21,11 +22,9 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = SubscriptionExport;
-export let details: HTMLDetailsElement;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = StudyMain;
 
 window.addEventListener('load', () => {
-    details = <HTMLDetailsElement>document.getElementById("details_1");
     if (entry_point) entry_point(
         Rx.fromEvent(GetBtn("btnMain"), 'click'),
         { Next: GetBtn("btnNext"), Complete: GetBtn("btnComplete"), Error: GetBtn("btnError") },
