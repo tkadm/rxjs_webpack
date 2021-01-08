@@ -15,6 +15,7 @@ import { Export as ReduceExport } from './operators/reduce';
 import { BehaviorSubjectExport } from './objects/BehaviorSubject';
 import { ExportSbs as SubscriptionExport } from './operators/subscription';
 import { Main as StudyMain } from './study/main';
+import { Main as ShareMain } from './operators/share';
 import { onWSClick } from './webSocket';
 
 export interface IButtons {
@@ -23,7 +24,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = StudyMain;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ShareMain;
 
 window.addEventListener('load', () => {
     if (entry_point) entry_point(
