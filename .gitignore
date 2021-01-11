@@ -3,3 +3,4 @@ node_modules/
 *.js.map
 package-lock.json
 !webpack.config.js
+debug.log

@@ -10,6 +10,31 @@ export function Export(obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: 
     ));
 }
 
+export function HttpGet<T>(uri: string, query: { [index: string]: string } = null): Rx.Observable<T> {
+    return new Rx.Observable(observer => {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        let query_str: string = "";
+        if (query) {
+            let values: Array<string> = [];
+            for (let p in query)
+                if (query.hasOwnProperty(p)) values.push(encodeURIComponent(p) + "=" + encodeURIComponent(query[p]));
+            query_str = "?" + values.join("&");
+        }
+        xhr.open("GET", uri + query_str);
+        xhr.send();
+        xhr.addEventListener("readystatechange", () => {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) throw new Error(`Status: ${xhr.status}; Error:${xhr.statusText}; Message:${xhr.responseText}`);
+            observer.next(JSON.parse(xhr.responseText));
+            observer.complete();
+        });
+    });
+}
+
+export function HTTPDelay(delay: number = 500): Rx.Observable<any> {
+    return HttpGet("http://webora/cdp/values/delay", { delay: delay.toString() });
+}
+
 function Action() {
     let init = { first: "First", second: 234 };
     let pas = { ...init, second: 200 };
