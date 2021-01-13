@@ -9,7 +9,7 @@ export function Main(obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IB
     console.log("Для старта нажми Main(next)");
 }
 
-let obs: Rx.Observable<object> = HTTPDelay(2000).pipe(share(), tap(value => {
+let obs: Rx.Observable<object> = HTTPDelay(1000).pipe(share(), tap(value => {
     console.log(`tap:${JSON.stringify(value)}`);
 }));
 

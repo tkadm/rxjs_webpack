@@ -1,6 +1,8 @@
 import * as Rx from 'rxjs';
 import { map, take, shareReplay } from 'rxjs/operators';
+
 import { Export } from './common';
+import { Export as AuditExport } from './operators/audit';
 import { Export as ExportDebounce } from './operators/debounce';
 import { Export as ExportRetryWhen } from './operators/retryWhen';
 import { Export as ExportAudit } from './operators/audit';
@@ -17,6 +19,7 @@ import { ExportSbs as SubscriptionExport } from './operators/subscription';
 import { Main as StudyMain } from './study/main';
 import { Main as ShareMain } from './operators/share';
 import { onWSClick } from './webSocket';
+import { Main as publishMain } from './operators/publish';
 
 export interface IButtons {
     Next: HTMLButtonElement;
@@ -24,7 +27,7 @@ export interface IButtons {
     Error: HTMLButtonElement;
 }
 
-let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = ShareMain;
+let entry_point: (obs: Rx.Observable<Event>, buttons: IButtons, buttonsII: IButtons) => void = publishMain;
 
 window.addEventListener('load', () => {
     if (entry_point) entry_point(
