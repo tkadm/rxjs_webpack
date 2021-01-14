@@ -31,8 +31,8 @@ export function HttpGet<T>(uri: string, query: { [index: string]: string } = nul
     });
 }
 
-export function HTTPDelay(delay: number = 500): Rx.Observable<any> {
-    return HttpGet("http://webora/cdp/values/delay", { delay: delay.toString() });
+export function HTTPDelay(delay: number = 500, prefix: string = ""): Rx.Observable<any> {
+    return HttpGet("https://api.phoenix-k.ru/delay", { delay: delay.toString(), prefix: prefix });
 }
 
 function Action() {
